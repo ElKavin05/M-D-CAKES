@@ -40,32 +40,32 @@ function waLink(msg) {
 function cardSVG(id) {
   const configs = {
     1: {
-      bg: '#f5e8e8', accent: '#c8748a', secondary: '#e8c8d8', tier: '#fdf8f3',
+      bg: '#f8eef1', accent: '#3e829a', secondary: '#c996a5', tier: '#fcfaf8',
       label: 'Pastel floral',
       deco: `
-        <circle cx="60" cy="55" r="12" fill="#e8c8d8" opacity="0.6"/>
-        <circle cx="140" cy="45" r="8"  fill="#c8748a" opacity="0.3"/>
-        <circle cx="100" cy="30" r="5"  fill="#b8895a" opacity="0.4"/>
-        <ellipse cx="80"  cy="62" rx="7" ry="5" fill="#c8748a" opacity="0.25"/>
-        <ellipse cx="120" cy="58" rx="6" ry="4" fill="#e8c8d8" opacity="0.5"/>`,
+        <circle cx="60" cy="55" r="12" fill="#c996a5" opacity="0.4"/>
+        <circle cx="140" cy="45" r="8"  fill="#3e829a" opacity="0.3"/>
+        <circle cx="100" cy="30" r="5"  fill="#d91d4a" opacity="0.4"/>
+        <ellipse cx="80"  cy="62" rx="7" ry="5" fill="#3e829a" opacity="0.25"/>
+        <ellipse cx="120" cy="58" rx="6" ry="4" fill="#c996a5" opacity="0.35"/>`,
     },
     2: {
-      bg: '#fdf3e8', accent: '#b8895a', secondary: '#e8d8b8', tier: '#fff9f5',
+      bg: '#edf5f7', accent: '#3e829a', secondary: '#b8895a', tier: '#ffffff',
       label: 'Pastel temático',
       deco: `
-        <rect x="48" y="42" width="18" height="14" rx="3" fill="#b8895a" opacity="0.25"/>
-        <rect x="134" y="38" width="14" height="18" rx="3" fill="#c8748a" opacity="0.2"/>
-        <circle cx="100" cy="28" r="6" fill="#b8895a" opacity="0.35"/>
-        <polygon points="72,65 80,52 88,65" fill="#8a6858" opacity="0.2"/>`,
+        <rect x="48" y="42" width="18" height="14" rx="3" fill="#3e829a" opacity="0.25"/>
+        <rect x="134" y="38" width="14" height="18" rx="3" fill="#c996a5" opacity="0.25"/>
+        <circle cx="100" cy="28" r="6" fill="#d91d4a" opacity="0.4"/>
+        <polygon points="72,65 80,52 88,65" fill="#5c321e" opacity="0.2"/>`,
     },
     3: {
-      bg: '#f0f5f0', accent: '#7a9e7a', secondary: '#c8dcc8', tier: '#f8fcf8',
+      bg: '#fdf8f4', accent: '#5c321e', secondary: '#c996a5', tier: '#ffffff',
       label: 'Pastel de boda',
       deco: `
-        <circle cx="55"  cy="48" r="9"  fill="#c8dcc8" opacity="0.6"/>
-        <circle cx="145" cy="52" r="7"  fill="#7a9e7a" opacity="0.3"/>
-        <circle cx="100" cy="30" r="4"  fill="#b8895a" opacity="0.4"/>
-        <rect x="88" y="65" width="24" height="3" rx="1.5" fill="#7a9e7a" opacity="0.35"/>`,
+        <circle cx="55"  cy="48" r="9"  fill="#c996a5" opacity="0.4"/>
+        <circle cx="145" cy="52" r="7"  fill="#3e829a" opacity="0.3"/>
+        <circle cx="100" cy="30" r="4"  fill="#d91d4a" opacity="0.45"/>
+        <rect x="88" y="65" width="24" height="3" rx="1.5" fill="#3e829a" opacity="0.35"/>`,
     },
   };
   const c = configs[id] || configs[1];
@@ -88,31 +88,31 @@ function cardSVG(id) {
 function heroSVG(id) {
   const configs = {
     0: {
-      bg: '#f5e8e8', accent: '#c8748a', tier1: '#fdf8f3', tier2: '#e8c8d8', tier3: '#f5e8e8',
+      bg: '#f8eef1', accent: '#3e829a', tier1: '#ffffff', tier2: '#c996a5', tier3: '#f8eef1',
       label: 'Pastel floral',
       petals: `
-        <circle cx="100" cy="72" r="10" fill="#c8748a" opacity="0.5"/>
-        <circle cx="88"  cy="78" r="7"  fill="#e8c8d8" opacity="0.6"/>
-        <circle cx="112" cy="78" r="7"  fill="#e8c8d8" opacity="0.6"/>
-        <circle cx="82"  cy="68" r="5"  fill="#b8895a" opacity="0.4"/>
-        <circle cx="118" cy="68" r="5"  fill="#b8895a" opacity="0.4"/>`,
+        <circle cx="100" cy="72" r="10" fill="#d91d4a" opacity="0.6"/>
+        <circle cx="88"  cy="78" r="7"  fill="#c996a5" opacity="0.6"/>
+        <circle cx="112" cy="78" r="7"  fill="#c996a5" opacity="0.6"/>
+        <circle cx="82"  cy="68" r="5"  fill="#3e829a" opacity="0.4"/>
+        <circle cx="118" cy="68" r="5"  fill="#3e829a" opacity="0.4"/>`,
     },
     1: {
-      bg: '#fdf3e8', accent: '#b8895a', tier1: '#fff9f5', tier2: '#f0e0c8', tier3: '#fdf3e8',
+      bg: '#edf5f7', accent: '#3e829a', tier1: '#ffffff', tier2: '#b8895a', tier3: '#edf5f7',
       label: 'Pastel temático',
       petals: `
-        <rect x="84" y="64" width="32" height="16" rx="4" fill="#b8895a" opacity="0.35"/>
-        <circle cx="100" cy="70" r="8" fill="#c8748a" opacity="0.4"/>
-        <rect x="88" y="62" width="8" height="10" rx="2" fill="#8a6858" opacity="0.3"/>
-        <rect x="104" y="62" width="8" height="10" rx="2" fill="#8a6858" opacity="0.3"/>`,
+        <rect x="84" y="64" width="32" height="16" rx="4" fill="#3e829a" opacity="0.35"/>
+        <circle cx="100" cy="70" r="8" fill="#d91d4a" opacity="0.5"/>
+        <rect x="88" y="62" width="8" height="10" rx="2" fill="#5c321e" opacity="0.3"/>
+        <rect x="104" y="62" width="8" height="10" rx="2" fill="#5c321e" opacity="0.3"/>`,
     },
     2: {
-      bg: '#f0f5f0', accent: '#7a9e7a', tier1: '#f8fcf8', tier2: '#c8dcc8', tier3: '#e0eee0',
+      bg: '#fdf8f4', accent: '#5c321e', tier1: '#ffffff', tier2: '#c996a5', tier3: '#fdf8f4',
       label: 'Pastel de boda',
       petals: `
-        <circle cx="100" cy="70" r="9" fill="#c8dcc8" opacity="0.7"/>
-        <ellipse cx="86" cy="75" rx="5" ry="7" fill="#7a9e7a" opacity="0.4"/>
-        <ellipse cx="114" cy="75" rx="5" ry="7" fill="#7a9e7a" opacity="0.4"/>
+        <circle cx="100" cy="70" r="9" fill="#c996a5" opacity="0.7"/>
+        <ellipse cx="86" cy="75" rx="5" ry="7" fill="#3e829a" opacity="0.4"/>
+        <ellipse cx="114" cy="75" rx="5" ry="7" fill="#3e829a" opacity="0.4"/>
         <circle cx="100" cy="64" r="4" fill="#b8895a" opacity="0.5"/>`,
     },
   };
