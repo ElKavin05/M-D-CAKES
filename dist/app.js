@@ -82,9 +82,6 @@ function cardSVG(id) {
       <rect x="84" y="66"  width="32" height="18" rx="4" fill="${c.secondary}" opacity="0.6"/>
       <!-- Topping -->
       <circle cx="100" cy="62" r="6" fill="${c.accent}" opacity="0.6"/>
-      <!-- Etiqueta referencial -->
-      <text x="100" y="134" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5"
-            fill="#8a6858" opacity="0.9">Imagen referencial · M&amp;D Cakes</text>
     </svg>`;
 }
 
@@ -131,11 +128,6 @@ function heroSVG(id) {
       ${c.petals}
       <!-- Plate -->
       <ellipse cx="100" cy="210" rx="60" ry="6" fill="${c.accent}" opacity="0.2"/>
-      <!-- Labels -->
-      <text x="100" y="232" text-anchor="middle" font-family="Arial,sans-serif"
-            font-size="8" fill="#8a6858">Fotografía referencial</text>
-      <text x="100" y="245" text-anchor="middle" font-family="Arial,sans-serif"
-            font-size="7" fill="#b8895a">Sustituir por foto de M&amp;D Cakes</text>
     </svg>`;
 }
 
@@ -209,9 +201,8 @@ function renderProducts() {
     card.setAttribute('aria-label', `Ver detalles de ${p.name}`);
     card.innerHTML = `
       <div class="card-thumb" aria-label="${p.alt}">
-        <img src="${p.image}" alt="${p.alt}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='${cardSVG(p.id)}'">
+        <img src="${p.image}" alt="${p.alt}" loading="lazy">
         <span class="card-badge">${p.category}</span>
-        <span class="ref-badge" title="Muestra referencial · Sustituir por foto de M&D Cakes">Referencia</span>
       </div>
       <div class="card-body">
         <h3>${p.name}</h3>
@@ -252,13 +243,13 @@ function openModal(id) {
 
   detailEl.innerHTML = `
     <div class="modal-thumb">
-      <img src="${p.image}" alt="${p.alt}" onerror="this.onerror=null;this.parentElement.innerHTML='${cardSVG(p.id)}'">
+      <img src="${p.image}" alt="${p.alt}">
     </div>
     <div class="modal-info">
       <p class="eyebrow">${p.category}</p>
       <h2 id="dialog-title">${p.name}</h2>
       <p>${p.description}</p>
-      <p class="modal-ref-note">Fotografía de muestra referencial. M&D Cakes adaptará colores, pisos, dedicatoria y sabores a tu celebración.</p>
+      <p class="modal-ref-note">M&D Cakes adapta cada detalle: colores, temática, dedicatoria y porciones para tu celebración.</p>
     </div>
     <div class="modal-form">
       <label>
@@ -327,12 +318,10 @@ const HERO_COUNT = 3;
 function updateHero() {
   if (!heroPh) return;
   const current = products[heroIndex] || products[0];
-  heroPh.innerHTML = `
-    <img class="hero-photo" src="${current.image}" alt="${current.alt}"
-         onerror="this.onerror=null;this.parentElement.innerHTML='${heroSVG(heroIndex)}'">`;
+  heroPh.innerHTML = `<img class="hero-photo" src="${current.image}" alt="${current.alt}">`;
   if (slideCount) slideCount.textContent = `0${heroIndex + 1} / 0${HERO_COUNT}`;
   const figText = document.querySelector('figcaption > span');
-  if (figText) figText.textContent = `${current.name} · Muestra referencial`;
+  if (figText) figText.textContent = `${current.name} · Pastelería artesanal`;
 }
 
 prevBtn?.addEventListener('click', () => {
