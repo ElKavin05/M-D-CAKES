@@ -211,6 +211,54 @@ header nav a:hover { color: var(--teal); }
 }
 .text-link:hover { color: var(--berry); }
 
+/* ── Hero Social Pill (Instagram) ─────────────────────────── */
+.hero-social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .55rem 1.15rem;
+  border-radius: var(--r-btn);
+  background: #ffffff;
+  border: 1.5px solid var(--line);
+  color: var(--cocoa);
+  font-size: .84rem;
+  font-weight: 500;
+  text-decoration: none;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(92,50,30,.04);
+  transition: all .25s ease;
+}
+.hero-social-pill:hover {
+  border-color: #E1306C;
+  color: #E1306C;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(225,48,108,.12);
+}
+.hero-social-pill .social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #faf0f3;
+  color: #E1306C;
+  flex-shrink: 0;
+}
+.hero-social-pill strong {
+  color: var(--teal);
+  font-weight: 600;
+}
+.hero-social-pill .pill-arrow {
+  color: var(--muted);
+  font-size: .95rem;
+  transition: transform .2s;
+}
+.hero-social-pill:hover .pill-arrow {
+  transform: translate(2px, -2px);
+  color: #E1306C;
+}
+
 /* ── Eyebrow ─────────────────────────────────────────────────── */
 .eyebrow {
   font-family: var(--ff-body);
@@ -478,8 +526,44 @@ form[role="search"] button:hover { color: var(--rose); }
   background: var(--blush);
   overflow: hidden;
 }
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+.card:hover .card-thumb img {
+  transform: scale(1.06);
+}
 .card-thumb svg, .card-thumb .img-placeholder {
   width: 100%; height: 100%;
+}
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ref-badge {
+  position: absolute;
+  bottom: .75rem;
+  right: .75rem;
+  background: rgba(255, 255, 255, .90);
+  backdrop-filter: blur(6px);
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 500;
+  padding: .25rem .6rem;
+  border-radius: var(--r-btn);
+  border: 1px solid rgba(235, 224, 216, .7);
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+.modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .card-badge {
   position: absolute;
@@ -567,6 +651,76 @@ form[role="search"] button:hover { color: var(--rose); }
 }
 #empty h3 { font-size: 1.5rem; }
 #empty p { color: var(--muted); }
+
+/* Gallery Callout Card */
+.gallery-callout {
+  max-width: var(--max-w);
+  margin: 3.5rem auto 0;
+  background: linear-gradient(135deg, #ffffff 0%, var(--blush) 100%);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 4px 20px rgba(92,50,30,.04);
+}
+.callout-content {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  max-width: 650px;
+}
+.callout-tag {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.callout-content h3 {
+  font-size: 1.45rem;
+  color: var(--cocoa);
+}
+.callout-content p {
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.btn-wa-callout {
+  background: var(--teal);
+  color: #fff;
+  border: 2px solid transparent;
+  padding: .85rem 1.6rem;
+  font-size: .92rem;
+  font-weight: 600;
+  border-radius: var(--r-btn);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  transition: all .25s ease;
+  box-shadow: 0 4px 14px rgba(62,130,154,.25);
+}
+.btn-wa-callout:hover {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(62,130,154,.35);
+}
+
+@media (max-width: 768px) {
+  .gallery-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem 1.5rem;
+    gap: 1.25rem;
+  }
+  .btn-wa-callout {
+    width: 100%;
+    justify-content: center;
+  }
+}
 
 .gallery-note {
   max-width: var(--max-w);
@@ -717,10 +871,29 @@ form[role="search"] button:hover { color: var(--rose); }
 .faq > div:first-child {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
   align-self: start;
   position: sticky;
   top: 6rem;
+}
+.btn-wa-faq {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .75rem 1.4rem;
+  border-radius: var(--r-btn);
+  background: var(--cocoa);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 600;
+  width: fit-content;
+  transition: all .25s ease;
+  box-shadow: 0 4px 12px rgba(92,50,30,.15);
+}
+.btn-wa-faq:hover {
+  background: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(62,130,154,.3);
 }
 details {
   border-bottom: 1px solid var(--line);

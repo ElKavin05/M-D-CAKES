@@ -5,28 +5,31 @@
 
 'use strict';
 
-/* ── Datos de muestra ───────────────────────────────────────── */
+/* ── Datos de muestra con fotografías referenciales ────────── */
 const products = [
   {
     id: 1,
-    name: 'Pastel floral',
+    name: 'Pastel floral artesanal',
     category: 'Cumpleaños',
-    description: 'Diseño floral delicado con detalles artesanales. Pétalos y hojas elaborados a mano para dar vida a cada celebración.',
-    alt: 'Pastel decorado con flores y colores suaves — imagen referencial',
+    description: 'Diseño floral delicado con acabado rústico en espátula. Tonos crema, acentos rosa empolvado y detalles en azúcar elaborados para celebraciones memorables.',
+    alt: 'Pastel artesanal con flores delicadas y glaseado en crema suave — muestra referencial',
+    image: 'assets/cake-floral.jpg',
   },
   {
     id: 2,
-    name: 'Pastel temático',
+    name: 'Pastel temático contemporáneo',
     category: 'Celebraciones',
-    description: 'Un diseño personalizado para cada temática especial. Cuéntanos qué imaginas y M&D Cakes lo hará realidad.',
-    alt: 'Pastel con decoración personalizada para celebración — imagen referencial',
+    description: 'Diseño moderno con drip satinado, macarons artesanales y toques dulces festivos. Ideal para aniversarios, cumpleaños y reuniones especiales.',
+    alt: 'Pastel contemporáneo con macarons, merengues y acabado festivo — muestra referencial',
+    image: 'assets/cake-tematico.jpg',
   },
   {
     id: 3,
-    name: 'Pastel de boda',
+    name: 'Pastel de boda / pisos elegantes',
     category: 'Bodas',
-    description: 'Elegancia y personalización para el día más especial. Varios pisos, detalles únicos y acabados artesanales.',
-    alt: 'Pastel de varios pisos con decoración elegante — imagen referencial',
+    description: 'Elegancia nupcial de dos pisos con textura satinada, cascada floral y sutiles toques dorados. Un centro de mesa sofisticado para tu gran día.',
+    alt: 'Pastel de bodas de dos pisos con flores y detalles dorados — muestra referencial',
+    image: 'assets/cake-boda.jpg',
   },
 ];
 
@@ -206,8 +209,9 @@ function renderProducts() {
     card.setAttribute('aria-label', `Ver detalles de ${p.name}`);
     card.innerHTML = `
       <div class="card-thumb" aria-label="${p.alt}">
-        ${cardSVG(p.id)}
+        <img src="${p.image}" alt="${p.alt}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='${cardSVG(p.id)}'">
         <span class="card-badge">${p.category}</span>
+        <span class="ref-badge" title="Muestra referencial · Sustituir por foto de M&D Cakes">Referencia</span>
       </div>
       <div class="card-body">
         <h3>${p.name}</h3>
@@ -247,12 +251,14 @@ function openModal(id) {
   if (!p) return;
 
   detailEl.innerHTML = `
-    <div class="modal-thumb">${cardSVG(p.id)}</div>
+    <div class="modal-thumb">
+      <img src="${p.image}" alt="${p.alt}" onerror="this.onerror=null;this.parentElement.innerHTML='${cardSVG(p.id)}'">
+    </div>
     <div class="modal-info">
       <p class="eyebrow">${p.category}</p>
       <h2 id="dialog-title">${p.name}</h2>
       <p>${p.description}</p>
-      <p class="modal-ref-note">Imagen y descripción referenciales. M&D Cakes lo personalizará según tus ideas.</p>
+      <p class="modal-ref-note">Fotografía de muestra referencial. M&D Cakes adaptará colores, pisos, dedicatoria y sabores a tu celebración.</p>
     </div>
     <div class="modal-form">
       <label>
@@ -320,8 +326,13 @@ const HERO_COUNT = 3;
 
 function updateHero() {
   if (!heroPh) return;
-  heroPh.innerHTML = heroSVG(heroIndex);
+  const current = products[heroIndex] || products[0];
+  heroPh.innerHTML = `
+    <img class="hero-photo" src="${current.image}" alt="${current.alt}"
+         onerror="this.onerror=null;this.parentElement.innerHTML='${heroSVG(heroIndex)}'">`;
   if (slideCount) slideCount.textContent = `0${heroIndex + 1} / 0${HERO_COUNT}`;
+  const figText = document.querySelector('figcaption > span');
+  if (figText) figText.textContent = `${current.name} · Muestra referencial`;
 }
 
 prevBtn?.addEventListener('click', () => {
