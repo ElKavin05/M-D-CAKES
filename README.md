@@ -2,6 +2,9 @@
 
 Muestra de diseño y presentación comercial para **M&D Cakes**, pastelería artesanal de pasteles personalizados en Pacora, Panamá. Proyecto desarrollado como propuesta de CirenCore, pendiente de aprobación por parte del negocio.
 
+- **Repositorio GitHub:** [https://github.com/ElKavin05/M-D-CAKES](https://github.com/ElKavin05/M-D-CAKES)
+- **Rama principal:** `main`
+
 ---
 
 ## Ejecución y vista previa local
