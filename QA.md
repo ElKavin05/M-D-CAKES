@@ -19,3 +19,6 @@ Detector Impeccable ejecutado una vez: texto pequeño corregido; cursiva editori
 No verificado: Safari/Firefox, lector de pantalla real, dispositivos físicos, modo de movimiento reducido emulado, animación al 10% de velocidad, portapapeles con permisos denegados y publicación en hosting. No se atribuye a esta revisión una auditoría integral de accesibilidad.
 
 Capturas actuales: preview-desktop-v2.jpg y preview-mobile-v2.jpg. Fotografías heredadas, referenciales, con procedencia pendiente de documentar.
+
+## Revisión de motion
+Sintaxis JS y diff comprobados. Tres estrellas visibles en escritorio y 390px. Sin desbordamiento a 320 y 390px. Carrusel probado con cambios consecutivos, tres capas y una sola activa. Preguntas abiertas con ratón y cerradas con teclado. Consola sin errores capturados. Movimiento reducido y cancelación al ocultar la pestaña revisados en código; emulación y medición de FPS en dispositivo físico pendientes. Captura: preview-motion.jpg.

@@ -237,10 +237,15 @@ const HERO_COUNT = 3;
 function updateHero() {
   if (!heroPh) return;
   const current = products[heroIndex] || products[0];
-  heroPh.innerHTML = `<img class="hero-photo" src="${current.image}" alt="${current.alt}" width="800" height="1000">`;
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroPh.animate([{opacity:.6, transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}], {duration:250,easing:'cubic-bezier(.22,1,.36,1)'});
+  // Keep all three layers mounted: rapid navigation can reverse a crossfade.
+  if (!heroPh.dataset.ready) {
+    heroPh.innerHTML = products.map((p, i) => `<img class="hero-photo${i === heroIndex ? ' is-current' : ''}" src="${p.image}" alt="${p.alt}" width="800" height="1000" ${i ? 'loading="lazy"' : 'fetchpriority="high"'} aria-hidden="${i !== heroIndex}">`).join('');
+    heroPh.dataset.ready = 'true';
   }
+  heroPh.querySelectorAll('img').forEach((img, i) => {
+    img.classList.toggle('is-current', i === heroIndex);
+    img.setAttribute('aria-hidden', String(i !== heroIndex));
+  });
   if (slideCount) slideCount.textContent = `0${heroIndex + 1} / 0${HERO_COUNT}`;
   const figText = document.querySelector('figcaption > span');
   if (figText) figText.textContent = `${current.name} · Pastelería artesanal`;
@@ -344,3 +349,64 @@ restoreSession();
 buildFilters();
 renderProducts();
 updateHero();
+
+/* Motion direction: a celebratory opening, then contextual feedback. */
+const motionEase = getComputedStyle(document.documentElement).getPropertyValue('--ease').trim();
+const activeMotion = new Set();
+let keyboardMotion = false;
+document.addEventListener('keydown', () => { keyboardMotion = true; document.body.classList.add('keyboard-motion'); });
+document.addEventListener('pointerdown', () => { keyboardMotion = false; document.body.classList.remove('keyboard-motion'); }, {passive:true});
+function playMotion(element, frames, options = {}) {
+  if (!element || motionQuery.matches || keyboardMotion || !element.animate) return;
+  const animation = element.animate(frames, {duration:500,easing:motionEase,...options});
+  activeMotion.add(animation);
+  animation.finished.catch(() => {}).finally(() => activeMotion.delete(animation));
+  return animation;
+}
+function stopMotion() {
+  activeMotion.forEach(animation => animation.cancel());
+  activeMotion.clear();
+}
+motionQuery.addEventListener('change', () => { if (motionQuery.matches) stopMotion(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) stopMotion(); });
+
+// A single opening sequence; content remains visible if JS is unavailable.
+playMotion(document.getElementById('hero-title'), [{transform:'translateY(12px)',opacity:.65},{transform:'none',opacity:1}], {duration:650});
+playMotion(document.querySelector('.photo-frame'), [{transform:'scale(.97)',opacity:.7},{transform:'scale(1)',opacity:1}], {duration:800});
+document.querySelectorAll('.cake-spark').forEach((star,i) => {
+  playMotion(star, [
+    {transform:'rotate(-25deg) scale(.75)',opacity:.25},
+    {transform:'rotate(12deg) scale(1.12)',opacity:1,offset:.45},
+    {transform:'rotate(0deg) scale(1)',opacity:.8}
+  ], {duration:2200,delay:160+i*180});
+});
+
+// Each composition gets one entrance. No blanket animation of every section.
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      if (entry.target.id === 'products') {
+        entry.target.querySelectorAll('.card-thumb').forEach((card,i) => {
+          playMotion(card,[{transform:'translateY(12px)',opacity:.65},{transform:'none',opacity:1}],{duration:500,delay:i*70});
+        });
+      } else if (entry.target.classList.contains('steps')) {
+        entry.target.classList.add('steps-connected');
+      } else {
+        playMotion(entry.target.querySelector('h2'),[{transform:'translateY(8px)',opacity:.65},{transform:'none',opacity:1}],{duration:600});
+      }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('#products,.steps,.closing').forEach(el => observer.observe(el));
+}
+
+// Disclosure feedback never moves inputs or delays keyboard interaction.
+document.querySelectorAll('.faq-list details,.message-preview').forEach(details => {
+  details.addEventListener('toggle', () => {
+    if (details.open) playMotion(details.querySelector('p,pre'),[{opacity:.5,transform:'translateY(-4px)'},{opacity:1,transform:'none'}],{duration:200});
+  });
+});
+filtersEl.addEventListener('click', e => {
+  if (e.target.closest('button')) playMotion(productsEl,[{opacity:.6},{opacity:1}],{duration:150});
+});

@@ -1321,3 +1321,38 @@ transform:none
 }
 
 }
+
+/* Celebratory motion: stars frame the headline without covering its letters. */
+.title-deco { position: relative; isolation: isolate; }
+.cake-spark { position: absolute; display: block; pointer-events: none; color: var(--rose); opacity: .8; }
+.spark-1 { width: 29px; top: -26px; right: 26px; }
+.spark-2 { width: 17px; top: 18%; right: -28px; color: var(--teal); }
+.spark-3 { width: 21px; bottom: -18px; left: 35%; }
+#hero-ph { position: relative; }
+#hero-ph .hero-photo { position: absolute; inset: 0; opacity: 0; transition: opacity 400ms var(--ease); }
+#hero-ph .hero-photo.is-current { opacity: 1; }
+.steps article { position: relative; }
+.steps article::before { content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 1px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 650ms var(--ease); }
+.steps-connected article::before { transform: scaleX(1); }
+.steps-connected article:nth-child(2)::before { transition-delay: 120ms; }
+.steps-connected article:nth-child(3)::before { transition-delay: 240ms; }
+header nav a { position: relative; }
+header nav a::after { content: ''; position: absolute; bottom: 7px; left: 0; right: 0; height: 1px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform var(--surface) var(--ease); }
+@media (hover:hover) and (pointer:fine) {
+  header nav a:hover { text-decoration: none; }
+  header nav a:hover::after { transform: scaleX(1); }
+  .hero-social-pill .pill-arrow { transition: transform var(--surface) var(--ease); }
+  .hero-social-pill:hover .pill-arrow { transform: translate(2px,-2px); }
+}
+@media(max-width:560px) {
+  .spark-1 { top: -16px; right: 12px; width: 23px; }
+  .spark-2 { top: 38%; right: 3px; width: 13px; }
+  .spark-3 { bottom: -13px; left: 72%; width: 17px; }
+}
+.keyboard-motion #hero-ph .hero-photo, .keyboard-motion .steps article::before { transition: none; }
+.keyboard-motion #modal[open], .keyboard-motion header nav.is-open { animation: none; }
+@media(prefers-reduced-motion:reduce) {
+  .cake-spark { opacity: .8; transform: none; }
+  .steps article::before { transform: scaleX(1); }
+  #hero-ph .hero-photo { transition: none; }
+}
