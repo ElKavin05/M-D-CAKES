@@ -85,7 +85,7 @@ El visitante siempre inicia el contacto voluntariamente; no se realizan envíos 
 ## Procedencia de recursos e imágenes
 
 - **Logo oficial mejorado:** Procesado en alta resolución (600x600 px) con recorte elíptico antialiasing para eliminar artefactos y fondos, guardado en `dist/assets/logo.png` con canal alfa transparente.
-- **Fotografías:** Composiciones ilustrativas vectoriales identificadas explícitamente como **referenciales**. No se emplearon imágenes de stock ficticias ni generaciones engañosas que pretendan hacerse pasar por trabajos reales de M&D Cakes.
+- **Fotografías:** Tres fotografías JPG heredadas del repositorio, utilizadas como **referencias visuales**. Su origen y permiso no están documentados en el repositorio; no deben atribuirse a trabajos reales de M&D Cakes. Sustituir por fotografías autorizadas antes de producción.
 - **Instagram verificado:** La cuenta `@md.cakespty` es el canal de referencia pública; se debe solicitar autorización previa antes de descargar e incorporar fotografías directas en el catálogo definitivo.
 
 ---
@@ -105,3 +105,9 @@ Antes de pasar a producción o publicar en un dominio definitivo:
 ## Alcance del proyecto
 
 Landing page estática optimizada para exploración visual y derivación directa a WhatsApp. No contiene pasarelas de pago, bases de datos en servidor, carritos de compra ni CRM. Se mantiene con etiqueta `noindex` hasta la aprobación expresa de M&D Cakes.
+
+## Refinamiento de interfaz · 28/10/2026
+
+Rama: `codex/design-polish`. Se conserva el stack estático y la identidad. Cambios: jerarquía editorial, fotografía estable, menú móvil con Escape, filtros con búsqueda sin tildes, tarjetas sin controles anidados, selección hacia formulario, vista previa y reinicio de consulta, validación de fecha/cantidad, portapapeles con recuperación y movimiento reducido. Carrusel manual, sin avance automático.
+
+`dist/` contiene directamente el código fuente publicable; no hay compilación ni dependencias nuevas. Vista previa: http://127.0.0.1:5190. Ver `DESIGN.md` y `QA.md`. Las capturas `preview-*-v2.jpg` corresponden al refinamiento; las PNG anteriores se conservan como referencia histórica.

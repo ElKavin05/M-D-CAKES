@@ -39,98 +39,6 @@ function waLink(msg) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
-/* ── Placeholders SVG por pastel ────────────────────────────── */
-function cardSVG(id) {
-  const configs = {
-    1: {
-      bg: '#f8eef1', accent: '#3e829a', secondary: '#c996a5', tier: '#fcfaf8',
-      label: 'Pastel floral',
-      deco: `
-        <circle cx="60" cy="55" r="12" fill="#c996a5" opacity="0.4"/>
-        <circle cx="140" cy="45" r="8"  fill="#3e829a" opacity="0.3"/>
-        <circle cx="100" cy="30" r="5"  fill="#d91d4a" opacity="0.4"/>
-        <ellipse cx="80"  cy="62" rx="7" ry="5" fill="#3e829a" opacity="0.25"/>
-        <ellipse cx="120" cy="58" rx="6" ry="4" fill="#c996a5" opacity="0.35"/>`,
-    },
-    2: {
-      bg: '#edf5f7', accent: '#3e829a', secondary: '#b8895a', tier: '#ffffff',
-      label: 'Pastel temático',
-      deco: `
-        <rect x="48" y="42" width="18" height="14" rx="3" fill="#3e829a" opacity="0.25"/>
-        <rect x="134" y="38" width="14" height="18" rx="3" fill="#c996a5" opacity="0.25"/>
-        <circle cx="100" cy="28" r="6" fill="#d91d4a" opacity="0.4"/>
-        <polygon points="72,65 80,52 88,65" fill="#5c321e" opacity="0.2"/>`,
-    },
-    3: {
-      bg: '#fdf8f4', accent: '#5c321e', secondary: '#c996a5', tier: '#ffffff',
-      label: 'Pastel de boda',
-      deco: `
-        <circle cx="55"  cy="48" r="9"  fill="#c996a5" opacity="0.4"/>
-        <circle cx="145" cy="52" r="7"  fill="#3e829a" opacity="0.3"/>
-        <circle cx="100" cy="30" r="4"  fill="#d91d4a" opacity="0.45"/>
-        <rect x="88" y="65" width="24" height="3" rx="1.5" fill="#3e829a" opacity="0.35"/>`,
-    },
-  };
-  const c = configs[id] || configs[1];
-  return `
-    <svg viewBox="0 0 200 160" aria-hidden="true" role="img">
-      <rect width="200" height="160" fill="${c.bg}" rx="4"/>
-      ${c.deco}
-      <!-- Pisos del pastel -->
-      <rect x="70" y="100" width="60" height="18" rx="4" fill="${c.secondary}" opacity="0.7"/>
-      <rect x="78" y="82"  width="44" height="20" rx="4" fill="${c.tier}"/>
-      <rect x="84" y="66"  width="32" height="18" rx="4" fill="${c.secondary}" opacity="0.6"/>
-      <!-- Topping -->
-      <circle cx="100" cy="62" r="6" fill="${c.accent}" opacity="0.6"/>
-    </svg>`;
-}
-
-function heroSVG(id) {
-  const configs = {
-    0: {
-      bg: '#f8eef1', accent: '#3e829a', tier1: '#ffffff', tier2: '#c996a5', tier3: '#f8eef1',
-      label: 'Pastel floral',
-      petals: `
-        <circle cx="100" cy="72" r="10" fill="#d91d4a" opacity="0.6"/>
-        <circle cx="88"  cy="78" r="7"  fill="#c996a5" opacity="0.6"/>
-        <circle cx="112" cy="78" r="7"  fill="#c996a5" opacity="0.6"/>
-        <circle cx="82"  cy="68" r="5"  fill="#3e829a" opacity="0.4"/>
-        <circle cx="118" cy="68" r="5"  fill="#3e829a" opacity="0.4"/>`,
-    },
-    1: {
-      bg: '#edf5f7', accent: '#3e829a', tier1: '#ffffff', tier2: '#b8895a', tier3: '#edf5f7',
-      label: 'Pastel temático',
-      petals: `
-        <rect x="84" y="64" width="32" height="16" rx="4" fill="#3e829a" opacity="0.35"/>
-        <circle cx="100" cy="70" r="8" fill="#d91d4a" opacity="0.5"/>
-        <rect x="88" y="62" width="8" height="10" rx="2" fill="#5c321e" opacity="0.3"/>
-        <rect x="104" y="62" width="8" height="10" rx="2" fill="#5c321e" opacity="0.3"/>`,
-    },
-    2: {
-      bg: '#fdf8f4', accent: '#5c321e', tier1: '#ffffff', tier2: '#c996a5', tier3: '#fdf8f4',
-      label: 'Pastel de boda',
-      petals: `
-        <circle cx="100" cy="70" r="9" fill="#c996a5" opacity="0.7"/>
-        <ellipse cx="86" cy="75" rx="5" ry="7" fill="#3e829a" opacity="0.4"/>
-        <ellipse cx="114" cy="75" rx="5" ry="7" fill="#3e829a" opacity="0.4"/>
-        <circle cx="100" cy="64" r="4" fill="#b8895a" opacity="0.5"/>`,
-    },
-  };
-  const c = configs[id] || configs[0];
-  return `
-    <svg viewBox="0 0 200 260" aria-hidden="true" role="img">
-      <rect width="200" height="260" fill="${c.bg}" rx="12"/>
-      <!-- Layers -->
-      <rect x="50" y="180" width="100" height="30" rx="6" fill="${c.tier2}" opacity="0.8"/>
-      <rect x="60" y="152" width="80"  height="30" rx="6" fill="${c.tier1}"/>
-      <rect x="70" y="126" width="60"  height="28" rx="6" fill="${c.tier2}" opacity="0.7"/>
-      <rect x="80" y="104" width="40"  height="24" rx="6" fill="${c.tier1}"/>
-      ${c.petals}
-      <!-- Plate -->
-      <ellipse cx="100" cy="210" rx="60" ry="6" fill="${c.accent}" opacity="0.2"/>
-    </svg>`;
-}
-
 /* ── State ──────────────────────────────────────────────────── */
 const STORAGE_KEY = 'md-cakes-selection';
 let activeFilter = 'Todos';
@@ -179,10 +87,11 @@ function buildFilters() {
 
 /* ── Render products ────────────────────────────────────────── */
 function renderProducts() {
-  const q = searchQuery.toLowerCase().trim();
+  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const q = normalize(searchQuery).trim();
   const list = products.filter(p => {
     const matchFilter = activeFilter === 'Todos' || p.category === activeFilter;
-    const matchSearch = !q || p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+    const matchSearch = !q || normalize(p.name).includes(q) || normalize(p.description).includes(q) || normalize(p.category).includes(q);
     return matchFilter && matchSearch;
   });
 
@@ -196,14 +105,11 @@ function renderProducts() {
   list.forEach(p => {
     const card = document.createElement('article');
     card.className = 'card';
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `Ver detalles de ${p.name}`);
     card.innerHTML = `
-      <div class="card-thumb" aria-label="${p.alt}">
+      <button class="card-thumb" aria-label="Ver imagen de ${p.name}">
         <img src="${p.image}" alt="${p.alt}" loading="lazy">
         <span class="card-badge">${p.category}</span>
-      </div>
+      </button>
       <div class="card-body">
         <h3>${p.name}</h3>
         <p>${p.description}</p>
@@ -223,8 +129,7 @@ function renderProducts() {
         <button class="card-details" data-id="${p.id}">Ver detalles</button>
       </div>`;
 
-    card.addEventListener('click', () => openModal(p.id));
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(p.id); } });
+    card.querySelector('.card-thumb').addEventListener('click', () => openModal(p.id));
     card.querySelector('.card-details').addEventListener('click', e => { e.stopPropagation(); openModal(p.id); });
     productsEl.appendChild(card);
   });
@@ -246,8 +151,8 @@ function openModal(id) {
       <img src="${p.image}" alt="${p.alt}">
     </div>
     <div class="modal-info">
-      <p class="eyebrow">${p.category}</p>
-      <h2 id="dialog-title">${p.name}</h2>
+      <p class="category-label">${p.category}</p>
+      <h2 id="dialog-title" tabindex="-1">${p.name}</h2>
       <p>${p.description}</p>
       <p class="modal-ref-note">M&D Cakes adapta cada detalle: colores, temática, dedicatoria y porciones para tu celebración.</p>
     </div>
@@ -262,6 +167,7 @@ function openModal(id) {
           Consultar por WhatsApp ↗
         </a>
         <button class="button secondary" id="modal-copy">Copiar consulta</button>
+        <button class="button secondary" id="use-design">Personalizar esta idea</button>
       </div>
     </div>`;
 
@@ -284,15 +190,28 @@ function openModal(id) {
   updateModalLink();
 
   modalCopy.addEventListener('click', () => {
-    navigator.clipboard.writeText(buildModalMsg()).then(() => showToast('¡Consulta copiada!')).catch(() => showToast('No se pudo copiar'));
+    copyText(buildModalMsg());
   });
 
+  document.getElementById('use-design').addEventListener('click', () => {
+    document.getElementById('f-ref').value = p.name;
+    document.getElementById('f-idea').value = notesEl.value.trim();
+    updateConsultLink();
+    modal.close();
+    document.getElementById('consulta').scrollIntoView({behavior: motionQuery.matches ? 'instant' : 'smooth'});
+    document.getElementById('f-ref').focus({preventScroll: true});
+  });
   modal.showModal();
+  document.body.classList.add('dialog-open');
   modal.querySelector('#dialog-title')?.focus();
 }
 
 closeBtn.addEventListener('click', () => modal.close());
-modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+modal.addEventListener('click', e => {
+  const r = modal.getBoundingClientRect();
+  if (e.target === modal && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) modal.close();
+});
+modal.addEventListener('close', () => document.body.classList.remove('dialog-open'));
 modal.addEventListener('keydown', e => { if (e.key === 'Escape') modal.close(); });
 
 /* ── Search ─────────────────────────────────────────────────── */
@@ -318,7 +237,10 @@ const HERO_COUNT = 3;
 function updateHero() {
   if (!heroPh) return;
   const current = products[heroIndex] || products[0];
-  heroPh.innerHTML = `<img class="hero-photo" src="${current.image}" alt="${current.alt}">`;
+  heroPh.innerHTML = `<img class="hero-photo" src="${current.image}" alt="${current.alt}" width="800" height="1000">`;
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroPh.animate([{opacity:.6, transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}], {duration:250,easing:'cubic-bezier(.22,1,.36,1)'});
+  }
   if (slideCount) slideCount.textContent = `0${heroIndex + 1} / 0${HERO_COUNT}`;
   const figText = document.querySelector('figcaption > span');
   if (figText) figText.textContent = `${current.name} · Pastelería artesanal`;
@@ -333,28 +255,8 @@ nextBtn?.addEventListener('click', () => {
   updateHero();
 });
 
-// Auto-advance only if user does not prefer reduced motion
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let heroTimer = null;
-if (!prefersReducedMotion) {
-  heroTimer = setInterval(() => {
-    heroIndex = (heroIndex + 1) % HERO_COUNT;
-    updateHero();
-  }, 6000);
-}
-
-// Pause/reset on manual interaction
-[prevBtn, nextBtn].forEach(btn => {
-  btn?.addEventListener('click', () => {
-    if (heroTimer) {
-      clearInterval(heroTimer);
-      heroTimer = setInterval(() => {
-        heroIndex = (heroIndex + 1) % HERO_COUNT;
-        updateHero();
-      }, 7000);
-    }
-  });
-});
+// Manual navigation keeps the visitor in control.
+const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ── Consulta form ──────────────────────────────────────────── */
 function buildConsultMsg() {
@@ -374,12 +276,14 @@ function buildConsultMsg() {
 function updateConsultLink() {
   if (!waConsult) return;
   waConsult.href = waLink(buildConsultMsg());
+  document.getElementById('message-preview').textContent = buildConsultMsg();
 }
 
 // Set minimum date to today
 const dateInput = document.getElementById('f-date');
 if (dateInput) {
-  const today = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   dateInput.min = today;
 }
 
@@ -389,11 +293,28 @@ consultForm?.querySelectorAll('input, textarea').forEach(el => {
 });
 updateConsultLink();
 
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); showToast('¡Consulta copiada!'); }
+  catch { showToast('No se pudo copiar. Usa el enlace de WhatsApp.'); }
+}
 copyConsult?.addEventListener('click', () => {
-  navigator.clipboard.writeText(buildConsultMsg())
-    .then(() => showToast('¡Consulta copiada al portapapeles!'))
-    .catch(() => showToast('No se pudo copiar. Inténtalo manualmente.'));
+  if (consultForm.reportValidity()) copyText(buildConsultMsg());
 });
+waConsult.addEventListener('click', e => { if (!consultForm.reportValidity()) e.preventDefault(); });
+consultForm.addEventListener('reset', e => {
+  e.preventDefault();
+  consultForm.querySelectorAll('input, textarea').forEach(field => { field.value = ''; });
+  updateConsultLink();
+});
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.getElementById('main-nav');
+function closeMenu() { menuToggle.setAttribute('aria-expanded','false'); mainNav.classList.remove('is-open'); }
+menuToggle.addEventListener('click', () => {
+  const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+  menuToggle.setAttribute('aria-expanded', String(open)); mainNav.classList.toggle('is-open',open);
+});
+mainNav.addEventListener('click', e => { if(e.target.closest('a')) closeMenu(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && mainNav.classList.contains('is-open')) {closeMenu();menuToggle.focus();} });
 
 /* ── Toast ──────────────────────────────────────────────────── */
 let toastTimer;

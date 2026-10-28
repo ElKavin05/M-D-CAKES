@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#c8748a">
+  <meta name="theme-color" content="#2c6377">
   <meta name="description" content="Pasteles personalizados en Pacora, Panamá. M&D Cakes diseña y elabora el pastel ideal para tu celebración. Muestra de diseño comercial de CirenCore.">
   <title>M&D Cakes · Un pastel tan especial como tu celebración</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -49,7 +49,8 @@
       <span>Pastelería artesanal<br><strong>Pacora, Panamá</strong></span>
     </a>
 
-    <nav aria-label="Navegación principal">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    <nav id="main-nav" aria-label="Navegación principal">
       <a href="#galeria">Diseños</a>
       <a href="#consulta">Prepara tu consulta</a>
       <a href="#como-funciona">Cómo consultar</a>
@@ -57,7 +58,7 @@
     </nav>
 
     <a class="button header-wa" href="https://wa.me/50761795457?text=Hola%2C%20M%26D%20Cakes.%20Vi%20su%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20consultar%20por%20un%20pastel%20personalizado." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
-      <span>Consultar por WhatsApp</span>
+      <span>Hablemos de tu pastel</span>
     </a>
   </header>
 
@@ -65,12 +66,9 @@
     <!-- 1. Primera pantalla / Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">M&amp;D CAKES · PACORA, PANAMÁ</p>
+
         <div class="title-deco">
-          <span class="deco deco-one" aria-hidden="true">✦</span>
-          <span class="deco deco-two" aria-hidden="true">✧</span>
-          <span class="deco deco-three" aria-hidden="true">✦</span>
-          <h1 id="hero-title">Un pastel tan especial<br>como tu <em>celebración.</em></h1>
+          <h1 id="hero-title">Un pastel tan especial como tu <em>celebración.</em></h1>
         </div>
         <p class="intro">
           Pasteles personalizados elaborados para acompañar tus fechas y momentos más importantes en Pacora y alrededores. Cuéntanos tu idea y coordinemos los detalles.
@@ -91,9 +89,9 @@
       </div>
 
       <figure class="hero-visual">
-        <div class="photo-frame">
+        <div class="photo-frame"><span class="photo-note">Inspiración para celebrar</span>
           <div class="img-placeholder" id="hero-ph" aria-label="Composición referencial de pasteles personalizados M&D Cakes">
-            <!-- El SVG interactivo se inyecta desde app.js -->
+            <img class="hero-photo" src="assets/cake-floral.jpg" alt="Pastel floral — fotografía referencial" width="800" height="1000" fetchpriority="high">
           </div>
         </div>
         <figcaption>
@@ -118,7 +116,7 @@
     <section class="gallery" id="galeria" aria-labelledby="gallery-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">EXPLORA NUESTROS TRABAJOS</p>
+
           <h2 id="gallery-title">Inspiración para tu <em>próxima fecha.</em></h2>
         </div>
         <p>
@@ -138,6 +136,7 @@
         </form>
       </div>
 
+      <p class="reference-note">Fotografías referenciales para explorar estilos.</p>
       <p id="result-count" class="result-count" aria-live="polite"></p>
 
       <div id="products">
@@ -153,7 +152,7 @@
 
       <div class="gallery-callout">
         <div class="callout-content">
-          <span class="callout-tag">Personalización a medida</span>
+
           <h3>¿Buscas una temática completamente distinta para tu evento?</h3>
           <p>Pasteles temáticos, personajes, aniversarios o eventos corporativos. Cuéntanos lo que imaginas y te asesoramos.</p>
         </div>
@@ -169,7 +168,7 @@
     <!-- 3. Prepara tu consulta -->
     <section class="consult-section" id="consulta" aria-labelledby="consult-title">
       <div class="consult-inner">
-        <p class="eyebrow">CONSULTA DIRECTA</p>
+
         <h2 id="consult-title">Prepara los detalles de <em>tu consulta.</em></h2>
         <p class="intro">
           Completa los datos que ya tengas definidos. Este módulo prepara un mensaje claro y ordenado para que lo envíes voluntariamente por WhatsApp.
@@ -189,7 +188,7 @@
 
             <div class="form-field">
               <label for="f-qty">Cantidad aproximada de personas</label>
-              <input id="f-qty" type="number" min="5" max="500" placeholder="Ej. 25">
+              <input id="f-qty" type="number" min="1" max="500" step="1" placeholder="Ej. 25">
             </div>
 
             <div class="form-field full">
@@ -202,21 +201,23 @@
             <strong>Aclaración:</strong> La disponibilidad, sabores, tamaños y cotización final se coordinan directamente con M&D Cakes por WhatsApp. No se solicitan pagos ni datos bancarios en esta web.
           </p>
 
+          <details class="message-preview"><summary>Ver el mensaje que vas a enviar</summary><pre id="message-preview"></pre></details>
           <div class="form-actions">
             <a class="button" id="wa-consult" href="#" target="_blank" rel="noopener">
-              Enviar consulta por WhatsApp ↗
+              Continuar en WhatsApp ↗
             </a>
             <button type="button" class="button secondary" id="copy-consult">
               Copiar texto de consulta
             </button>
           </div>
+        <button type="reset" class="reset-consult">Limpiar consulta</button>
         </form>
       </div>
     </section>
 
     <!-- 4. Cómo consultar (Tres pasos) -->
     <section class="process" id="como-funciona" aria-labelledby="process-title">
-      <p class="eyebrow">PASO A PASO</p>
+
       <h2 id="process-title">Cómo coordinar <em>tu pastel.</em></h2>
       <div class="steps">
         <article>
@@ -243,7 +244,7 @@
     <!-- 5. Preguntas frecuentes -->
     <section class="faq" id="preguntas" aria-labelledby="faq-title">
       <div>
-        <p class="eyebrow">RESOLVEMOS TUS DUDAS</p>
+
         <h2 id="faq-title">Preguntas <em>frecuentes.</em></h2>
         <p>¿Tienes alguna consulta adicional antes de escribirnos?</p>
         <a class="button btn-wa-faq" href="https://wa.me/50761795457?text=Hola%2C%20M%26D%20Cakes.%20Vi%20su%20p%C3%A1gina%20y%20tengo%20una%20pregunta%20sobre%20sus%20pasteles%20personalizados." target="_blank" rel="noopener">
@@ -284,7 +285,7 @@
 
     <!-- 6. Contacto y cierre -->
     <section class="closing" aria-labelledby="closing-title">
-      <p class="eyebrow">PACORA, PANAMÁ · M&amp;D CAKES</p>
+
       <h2 id="closing-title">Cuéntanos cómo imaginas<br>tu próximo <em>pastel.</em></h2>
       <p class="closing-desc">
         Estamos listos para orientarte y diseñar una pieza memorable para tu evento.
@@ -349,6 +350,7 @@
     <span>WhatsApp</span>
   </a>
 
+  <noscript><p class="no-script">Para explorar los diseños y preparar tu consulta, activa JavaScript. También puedes escribirnos usando los enlaces de WhatsApp.</p></noscript>
   <!-- Script interactivo -->
   <script src="app.js"></script>
 </body>
