@@ -35,16 +35,15 @@ sites/md-cakes/
 
 ## Identidad visual y dirección de diseño
 
-- **Estética:** Pastelería artesanal cálida, limpia, con fotografía y detalles protagonistas, espacios amplios y tipografía cuidada.
-- **Paleta de colores (provisional para muestra, a conciliar con el logo final):**
-  - Fondo base: Crema cálida (`--cream`: `#fdf8f3`)
-  - Tinta de texto: Marrón cacao artesanal (`--cocoa`: `#4a2c1a`)
-  - Acento primario: Rosa pétalo pastelero (`--rose`: `#c8748a`)
-  - Fondos secundarios: Rosa blush (`--blush`: `#f5e8e8`)
-  - Acento cálido: Dorado horneado (`--gold`: `#b8895a`)
-  - Texto secundario: Muted cálido (`--muted`: `#8a6858`)
-  - Líneas y bordes: Arena suave (`--line`: `#ede0d8`)
-  - Fondo de tarjetas: Papel marfil (`--paper`: `#fff9f5`)
+- **Estética:** Pastelería artesanal cuidada, cálida, con contrastes de alta gama entre azul cerceta, rosa oro y marrón chocolate.
+- **Paleta oficial extraída directamente del logo:**
+  - **Azul Cerceta / Teal (`--teal`: `#3E829A`):** Color protagonista de las iniciales caligráficas "M&D". Brinda sofisticación y frescura.
+  - **Teal profundo (`--teal-dark`: `#2C6377`):** Usado para estados de interacción, foco y contraste alto.
+  - **Rosa Oro / Glitter Rose (`--rose`: `#C996A5`):** Tono extraído del aro circular texturizado que enmarca la marca.
+  - **Marrón Chocolate / Cacao (`--cocoa`: `#5C321E`):** Extraído directamente de la palabra "Cakes" para títulos y textos con calidez de repostería.
+  - **Rojo Cereza / Berry (`--berry`: `#D91D4A`):** Acento festivo y vibrante derivado de la cereza y cobertura del pastelito sobre la marca.
+  - **Fondo Crema Seda (`--cream`: `#FCFAF8`):** Fondo base luminoso y acogedor.
+  - **Fondo de Tarjetas (`--paper`: `#FFFFFF`):** Blanco nítido para destacar fotografías y productos.
 - **Tipografía:**
   - Títulos expresivos: *Cormorant Garamond* (Google Fonts)
   - Textos y lectura: *DM Sans* (Google Fonts)
@@ -82,7 +81,7 @@ El visitante siempre inicia el contacto voluntariamente; no se realizan envíos 
 
 ## Procedencia de recursos e imágenes
 
-- **Logo:** Se incluye una composición vectorial SVG referencial en la cabecera a la espera de integrar el archivo oficial entregado por el cliente.
+- **Logo oficial mejorado:** Procesado en alta resolución (600x600 px) con recorte elíptico antialiasing para eliminar artefactos y fondos, guardado en `dist/assets/logo.png` con canal alfa transparente.
 - **Fotografías:** Composiciones ilustrativas vectoriales identificadas explícitamente como **referenciales**. No se emplearon imágenes de stock ficticias ni generaciones engañosas que pretendan hacerse pasar por trabajos reales de M&D Cakes.
 - **Instagram verificado:** La cuenta `@md.cakespty` es el canal de referencia pública; se debe solicitar autorización previa antes de descargar e incorporar fotografías directas en el catálogo definitivo.
 
